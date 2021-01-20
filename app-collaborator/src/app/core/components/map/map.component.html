@@ -1,0 +1,23 @@
+<div style="background:#9ae29a">
+
+  <br>
+  <h1>buscar direccion</h1>
+  <input *ngIf="edit" [(ngModel)]="addressUser" (keyup.enter)="findAddressUser()">
+  <button type="button" name="button" (click)="findAddressUser()">BUSCAR</button>
+  <button type="button" name="button" (click)="setCurrentPosition()">ACTUAL POSICION</button>
+  <br>
+
+  <div #map id="map" class="map"></div>
+
+  <br>
+
+  <table>
+    <tr>
+      <td *ngIf="!edit">{{address}}</td>
+      <td *ngIf="edit"><input *ngIf="edit" [(ngModel)]="address" (change)="changeAddress($event)"></td>
+      <td>{{latitude}}</td>
+      <td>{{longitude}}</td>
+    </tr>
+  </table>
+
+</div>

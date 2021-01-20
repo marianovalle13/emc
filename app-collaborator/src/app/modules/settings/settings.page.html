@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Configuración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item (click)="goToAssociate()">
+      <ion-label>
+        <h2>Asociar Colaboradores</h2>
+      </ion-label>
+      <ion-icon name="people-circle" color="primary" slot="start"></ion-icon>
+      <ion-icon name="chevron-forward" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label (click)="openModal()">
+        <h2>Vía Pública</h2>
+      </ion-label>
+      <ion-icon name="medical" color="primary" slot="start"></ion-icon>
+      <ion-icon name="chevron-forward" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="logout()">
+      <ion-label>
+        <h2>Cerrar Sesión</h2>
+      </ion-label>
+      <ion-icon name="log-out" color="primary" slot="start"></ion-icon>
+      <ion-icon name="chevron-forward" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

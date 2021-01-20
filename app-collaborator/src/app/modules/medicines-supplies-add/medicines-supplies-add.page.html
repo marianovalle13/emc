@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Medicamentos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="ion-padding">
+    
+      <ion-item>
+        <ion-label position="stacked">Categoria</ion-label>
+        <ion-select >
+          <ion-select-option value="1" >Calmantes</ion-select-option>
+          <ion-select-option value="2">Calmantes</ion-select-option>
+          <ion-select-option value="3">Calmantes</ion-select-option>
+          
+        </ion-select>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="stacked">Medicamentos</ion-label>
+        <ion-select>
+          <ion-select-option value="1">Morfina</ion-select-option>
+          <ion-select-option value="2">Morfina</ion-select-option>
+          <ion-select-option value="3">Morfina</ion-select-option>
+      
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Cantidad</ion-label>        
+        <ion-input type="number"></ion-input>
+      </ion-item>
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="primary" (click)="dismiss()">Agregar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

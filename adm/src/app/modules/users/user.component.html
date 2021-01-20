@@ -1,0 +1,423 @@
+<div class="container">
+  <nav aria-label="breadcrumb" class="mt-2">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/users']" routerLinkActive="router-link-active">Usuarios</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Gestionar Usuario</li>
+    </ol>
+  </nav>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2 class=" border-bottom ">Datos personales</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nombre y Apellido</label>
+          <input type="text" class="form-control" formControlName="fullName" placeholder="Nombre y apellido">
+          <div *ngIf="isFieldValid('fullName')" class="invalid-input-message">
+            {{getFieldError('fullName')}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-3">
+        <label>Genero</label>
+        <select class="form-control" formControlName="gender">
+          <optgroup label="Seleccione">
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Numero de telefono</label>
+          <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Numero de telefono">
+          <div *ngIf="isFieldValid('phoneNumber')" class="invalid-input-message">
+            {{getFieldError('phoneNumber')}}
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <br>
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" class="form-control" formControlName="emailAddress" placeholder="E-Mail">
+          <div *ngIf="isFieldValid('emailAddress')" class="invalid-input-message">
+            {{getFieldError('emailAddress')}}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>DNI</label>
+          <input type="text" class="form-control" formControlName="dni" placeholder="DNI">
+          <div *ngIf="isFieldValid('dni')" class="invalid-input-message">
+            {{getFieldError('dni')}}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 mt-4 text-center">
+        <div class="form-group" style="margin-top: -22px;">
+        <label>Fecha de nacimiento</label> <br>
+        <dp-date-picker  mode="day"  theme="dp-material" [formControl]="form.controls['birthDate']" ></dp-date-picker>
+      </div>
+
+      </div>
+    </div>
+
+    <!-- <h2 class=" border-bottom ">Direccion</h2>
+    <div formGroupName='address'>
+
+    
+    <div class="row">
+    
+      <div class="col-md-4 mr-3">
+        <div class="form-group">
+          <label>Calle</label>
+          <input type="text" class="form-control" formControlName="street" placeholder="Calle">
+          <div *ngIf="isFieldValid('address.street')" class="invalid-input-message">
+            {{getFieldError('street')}}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 ml-5">
+        <button class="btn btn-primary " style="margin-top: 26px;" block [disabled]="!form.valid" type="button">
+          <i class="fa fa-search" aria-hidden="true"></i> Buscar
+        </button>
+
+      </div>
+
+
+    </div>
+      <div class="row">
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Piso</label>
+            <input type="text" class="form-control" formControlName="floor" placeholder="Piso">
+            <div *ngIf="isFieldValid('floor')" class="invalid-input-message">
+              {{getFieldError('floor')}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Depto/Oficina</label>
+            <input type="text" class="form-control" placeholder="Depto/Oficina">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Codigo postal</label>
+            <input type="text" class="form-control" formControlName="zipCode" placeholder="Codigo postal">
+            <div *ngIf="isFieldValid('zipCode')" class="invalid-input-message">
+              {{getFieldError('zipCode')}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Pais</label>
+            <input type="text" class="form-control" placeholder="Pais">
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Provincia</label>
+            <input type="text" class="form-control" formControlName="province" placeholder="Provincia">
+            <div *ngIf="isFieldValid('province')" class="invalid-input-message">
+              {{getFieldError('province')}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Ciudad</label>
+            <input type="text" class="form-control" formControlName="city" placeholder="Ciudad">
+            <div *ngIf="isFieldValid('city')" class="invalid-input-message">
+              {{getFieldError('city')}}
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div> -->
+
+
+    <h2 class=" border-bottom ">Datos Medicos</h2>
+    <div class="row mb-5">
+      <div class="col-md-6 mb-5">
+        <label>Obra social</label>
+        <select class="form-control">
+          <optgroup label="Seleccione">
+            <option value="">Apross</option>
+            <option value="">Swid Medical</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label>Plan de obra social</label>
+        <select class="form-control">
+          <optgroup label="Seleccione">
+            <option value="">Plan 3000</option>
+            <option value="">Plan 2500</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <!-- <div class="col-md-4">
+        <form>
+          <div class="form-group">
+            <label>Nombre y Apellido</label>
+            <input type="text" class="form-control"  placeholder="Nombre y apellido">
+          </div>
+          <div class="form-group">
+            <label>Fecha de nacimiento</label>
+            <mat-form-field appearance="fill" class="ml-5">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input matInput [matDatepicker]="picker" >
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <label>Genero</label>
+            <select class="form-control" >
+              <optgroup label="Seleccione">
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+              </optgroup>
+            </select>
+          </div>
+
+
+        </form>
+      </div> -->
+
+      <ng-template #content let-modal>
+
+        <div class="modal-body">
+
+            <form>
+              <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label >Vinculo</label>
+                    <input type="text" placeholder="Nombre" class="form-control mb-2" [(ngModel)]="familyGroupName"
+                      [ngModelOptions]="{standalone: true}" />
+                </div>
+              </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Genero</label>
+                    <select class="form-control" [(ngModel)]="familyGroupGender"  [ngModelOptions]="{standalone: true}">
+                      <optgroup label="Seleccione" >
+                        <option value="Masculino"  >Masculino</option>
+                        <option value="Femenino"  >Femenino</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                  </div>
+              
+              
+                  <div class="col-md-6">
+      
+                    <div class="form-group">
+                  <label >Fecha de nacimiento</label>
+                    <dp-date-picker  mode="day" class="datePicker" theme="dp-material"   [(ngModel)]="familyGroupbirthDate" [ngModelOptions]="{standalone: true}">
+                    </dp-date-picker>
+                  </div>
+                  </div>
+              
+                  <div class="col-md-6">
+                    <button class="btn btn-success btn-block mt-4 " (click)="addFamilyGroup()"   type="button">
+                      <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                    </button>
+                  
+                  </div>
+            </div>
+            </form>
+        </div>
+      </ng-template>
+
+      
+
+      <div class="col-md-6">
+        <label>Grupo Familiar</label>
+
+        <div class="row p-3">
+          <table class="table table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th>
+                    Vinculo
+                </th>
+
+                <th>
+                  Genero
+                </th>
+      
+                <th>
+                    Fecha de Nacimiento
+                </th>
+                <th>
+                  
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <!-- Texto cuando no hay resultados  -->
+              <tr *ngFor="let item of item?.familiarGroup">
+                <td class="px-4">
+                  {{item.fullName}}
+                </td>
+
+                <td class="text-center">
+                  {{item.gender}}
+                </td>
+      
+                <td class="text-center">
+                  {{item.birthDate | date:'dd/MM/yyyy'}}
+                </td>
+    
+                <td class="text-right text-center">
+                  <button class="btn btn-danger btn-sm" type="button" (click)="removeFamilyGroup(item)">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <div class="col-md-3 mt-5">
+        <button class="btn btn-lg btn-outline-primary" type="button" (click)="openModal(content, item)">Agregar</button>
+      </div>
+
+
+      <div class="col-md-6 mt-2">
+        <label>Ficha Medica</label>
+
+        <div class="row p-3">
+          <table class="table table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th>
+                    Enfermedad
+                </th>
+
+                <th>
+                  Comentario
+                </th>
+                <th>
+                  
+                </th>
+               
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <!-- Texto cuando no hay resultados  -->
+              <tr *ngFor="let objDisease of item?.medicalRecord">
+                <td class="px-4">
+                  {{objDisease.disease}}
+                </td>
+
+                <td class="">
+                  {{objDisease.commentary}}
+                </td>
+    
+                <td class="text-right text-center">
+                  <button class="btn btn-danger btn-sm" type="button" (click)="removeDisease(objDisease)">
+                    <i class="fa fa-close" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <div class="col-md-6 mt-2">
+        <label>Agregar enfermedad</label>
+        <form  class="pt-3">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Enfermedad</label>
+                <input type="text" class="form-control" [(ngModel)]="disease" placeholder="Enfermedad" [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Dercripcion</label>
+                <textarea  cols="4" rows="4" class="form-control" [(ngModel)]="commentary" [ngModelOptions]="{standalone: true}"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <button class="btn btn-success btn-block "  type="button" (click)="addDisease()">
+                  <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+          </form>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-secondary float-right  mb-5 mr-4" block [disabled]="!form.valid" type="submit">
+          <i class="fa fa-check" aria-hidden="true"></i> GUARDAR CAMBIOS
+        </button>
+      </div>
+    </div>
+  </form>
+  
+
+</div>

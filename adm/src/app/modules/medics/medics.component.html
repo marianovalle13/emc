@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="row section-header">
+    <div class="col-sm-6">
+      <h2 class="section-title">Usuarios</h2>
+    </div>
+    <div class="col-sm-6">
+      <button type="button" class="btn btn-primary ml-2" (click)="create()">
+        <i class="fa fa-plus"></i> Agregar
+      </button>
+    </div>
+
+  </div>
+  <div class="row section-filters mt-2">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="textSearch">Buscar</label>
+        <input type="text" class="form-control" id="textSearch" (keyup.enter)="getItems()"
+          placeholder="Buscar por nombre..." [(ngModel)]="textSearch" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <!-- <div class="col-md-2">
+      <div class="form-group">
+        <label for="filter">Filtrar</label>
+        <select class="form-control" [(ngModel)]="type" name="filter" id="filter">
+          <optgroup label="Seleccione">
+            <option value="" selected>Todos</option>
+            <option value="Teórico">Teóricos</option>
+            <option value="Presencial">Presenciales</option>
+          </optgroup>
+        </select>
+      </div>
+    </div> -->
+    <div class="col-md-1">
+      <div class="form-group">
+        <label>.</label>
+        <button class="btn btn-outline-primary btn-block" (click)="getItems()">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row p-3">
+    <table class="table table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th>
+            <button type="button" class="btn btn-light" (click)="sort('fullName')">
+              Nombre
+              <i class="fa" [ngClass]="{'fa-arrow-down': sortField.fullName == 1,'fa-arrow-up': sortField.fullName == -1}"
+                aria-hidden="true"></i>
+            </button>
+          </th>
+
+          <th>
+            <button type="button" class="btn btn-light" (click)="sort('birthDate')">
+              Fecha de Nacimiento
+              <i class="fa" [ngClass]="{'fa-arrow-down': sortField.birthDate == 1,'fa-arrow-up': sortField.birthDate == -1}"
+                aria-hidden="true"></i>
+            </button>
+          </th>
+
+          <th  >
+            <button type="button" class="btn btn-light" (click)="sort('phc')">
+              Obra social
+              <i class="fa" [ngClass]="{'fa-arrow-down': sortField.phc == 1,'fa-arrow-up': sortField.phc == -1}"
+                aria-hidden="true"></i>
+            </button>
+          </th>
+           <th>
+            <button type="button" class="btn btn-light" (click)="sort('gender')">
+              Genero <i class="fa" [ngClass]="{'fa-arrow-down': sortField.gender == 1,'fa-arrow-up': sortField.gender == -1}"
+                aria-hidden="true"></i>
+            </button>
+          </th>
+          
+          <th>
+            <button type="button" class="btn btn-light" (click)="sort('enabled')">
+              Usuario Habilitado <i class="fa"
+                [ngClass]="{'fa-arrow-down': sortField.enabled == 1,'fa-arrow-up': sortField.enabled == -1}"
+                aria-hidden="true"></i>
+            </button>
+          </th>
+          <th width="20%" class="text-right">
+            {{count}} Resultados
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Cargador -->
+        <tr *ngIf="loading" class="text-center">
+          <td colspan="6">
+            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Cargando...
+          </td>
+        </tr>
+        <!-- Texto cuando no hay resultados  -->
+        <tr *ngIf="!loading && items.length == 0" class="text-center">
+          <td colspan="6">
+            <span class="text-muted">
+              <i class="fa fa-close" aria-hidden="true"></i>
+              No hay resultados para mostrar
+            </span>
+          </td>
+        </tr>
+        <tr *ngFor="let item of items">
+          <td class="px-4">
+            {{item.fullName}}
+          </td>
+
+          <td class="text-center">
+            {{item.birthDate | date:'dd/MM/yyyy'}}
+          </td>
+
+          <td class="text-center">
+            {{item.phc.name}}
+          </td>
+          <td class="text-center">
+            {{item.gender}}
+          </td>
+           
+
+          <td class="text-center">
+            <input type="checkbox" [(ngModel)]="item.enabled" (change)="update(item)">
+          </td> 
+
+          
+          <td class="text-right text-center">
+            <button class="btn btn-secondary btn-sm mr-2" type="button" (click)="edit(item)">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" type="button" (click)="remove(item)">
+              <i class="fa fa-close" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Replicar para los demás modulos (fix paginación) -->
+  <div class="row">
+    <div class="col-4">
+    </div>
+    <div class="col-4 d-flex justify-content-between">
+      <button type="button" class="btn btn-light border border-dark w-50" (click)="previousPage()"
+        [disabled]="page <= 1">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        Anterior
+      </button>
+      <p class="text-muted my-2 mx-3">{{page}}</p>
+      <button type="button" class="btn btn-light border border-dark w-50" (click)="nextPage()"
+        [disabled]="pages <= page">
+        Siguiente
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="col-4 text-right pt-2">
+      <span class="text-muted">
+        Total de páginas {{pages}}
+      </span>
+    </div>
+  </div>
+</div>

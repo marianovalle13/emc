@@ -1,0 +1,40 @@
+<div class="container-fluid d-flex align-items-center h-100">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-6 offset-3">
+          <img src="./assets/imgs/logo.png" alt="" class="img-fluid">
+        </div>
+        <hr>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-6">
+              <h2 class="text-black-50">Iniciar Sesión</h2>
+              <form class="w-100 pt-3" [formGroup]="form" (ngSubmit)="login(form.value)">
+                <div class="form-group mb-3">
+                  <label>Usuario</label>
+                  <input type="text" class="form-control" formControlName="username">
+                </div>
+                <div class="form-group mb-3">
+                  <label>Password</label>
+                  <input type="password" class="form-control" formControlName="password">
+                </div>
+                <button class="btn btn-primary btn-block mb-4 mt-4" block [disabled]="!form.valid" type="submit">
+                  <i class="fa fa-check" aria-hidden="true"></i> INGRESAR
+                </button>
+              </form>
+            </div>
+            <div style="border-left:1px solid rgb(201, 201, 201);height:300px"></div>
+              <div class="col-5">
+                <h2 class="text-black-50 mb-3">Registrate</h2>
+                <button class="btn btn-outline-danger col mt-3 mb-3">Um</button>
+                <button class="btn btn-outline-danger col mb-3">Conductor</button>
+                <button class="btn btn-outline-danger col mb-3">Enfermero</button>
+                <button class="btn btn-outline-danger col mb-3">Médico</button>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

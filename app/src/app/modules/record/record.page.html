@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historial</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToUser()">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let item of emergencies">
+    <ion-card-header class="custom-header" style="padding-bottom: 0px;">
+      <ion-item lines="none" style="--background: {{item.emergencyType.ui.background}};" class="class-item">
+        <ion-thumbnail item-left>
+          <img [src]="item.emergencyType.ui.icon ? filesUrl + item.emergencyType.ui.icon : 'assets/imgs/' + item.emergencyType.code + '.png'">
+        </ion-thumbnail>
+        <ion-label class="class-label" text-wrap style="font-weight: bold;">
+          {{item.emergencyType.name}}
+        </ion-label>
+        <!-- <ion-note slot="end">20/11/2020</ion-note> -->
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list class="customer-detail">
+        <ion-item>
+          <ion-label>Fecha de Atención</ion-label>
+          <ion-note slot="end">{{item.createdAt | date: 'dd/MM/yyyy'}}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Tiempo de atención</ion-label>
+          <ion-note slot="end" *ngIf="item?.atentionTime?.start">{{item?.atentionTime?.start}} a {{item?.atentionTime?.end}}</ion-note>
+          <ion-note slot="end" *ngIf="!item?.atentionTime?.start">-</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Médico</ion-label>
+          <ion-note slot="end" *ngIf="item?.collaborator?.collaborators?.medic?.fullName">{{item.collaborator?.collaborators?.medic?.fullName}}</ion-note>
+          <ion-note slot="end" *ngIf="!item?.collaborator?.collaborators?.medic?.fullName">-</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Enfermero</ion-label>
+          <ion-note slot="end" *ngIf="item?.collaborator?.collaborators?.nurse?.fullName">{{item.collaborator?.collaborators?.nurse?.fullName}}</ion-note>
+          <ion-note slot="end" *ngIf="!item?.collaborator?.collaborators?.nurse?.fullName">-</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Conductor</ion-label>
+          <ion-note slot="end" *ngIf="item?.collaborator?.collaborators?.driver?.fullName">{{item.collaborator?.collaborators?.driver?.fullName}}</ion-note>
+          <ion-note slot="end" *ngIf="!item?.collaborator?.collaborators?.driver?.fullName">-</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Diagnostico</ion-label>
+          <ion-note slot="end" *ngIf="item?.diagnostic">{{item?.diagnostic}}</ion-note>
+          <ion-note slot="end" *ngIf="!item?.diagnostic">-</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ubicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div #map id="map"></div>
+
+      <!-- <ion-button expand="block" color="secondary" style="position: absolute;">Ingresando servicio</ion-button> -->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+     <ion-fab-button color="secondary" (click)="openModal()">
+       <ion-icon name="arrow-forward"></ion-icon>
+     </ion-fab-button>
+   </ion-fab> 
+
+</ion-content>

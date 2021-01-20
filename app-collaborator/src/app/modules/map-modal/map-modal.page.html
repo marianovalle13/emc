@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Datos del paciente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label text-wrap>Nombre</ion-label>
+      <ion-note slot="end">Pedro Rodriguez</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label text-wrap>Edad</ion-label>
+      <ion-note slot="end">50 años</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label text-wrap>Antecedentes</ion-label>
+      <ion-note slot="end">Antecedentes</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label text-wrap> Motivo de consulta</ion-label>
+      <ion-note slot="end">Golpe en la cabeza</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-row style="margin-top: 5vh;">
+    <ion-col class="ion-padding">
+      <ion-button expand="block" color="danger" fill="outline" style="--border-radius: 30px;">ACV</ion-button>
+    </ion-col>
+  </ion-row>
+
+  
+  
+  
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="primary" (click)="goToMapVideo()">Cerrar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

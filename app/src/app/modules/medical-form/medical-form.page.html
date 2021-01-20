@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Ficha médica</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let item of diseases">
+    <ion-label>{{item.name}}</ion-label>
+    <ion-checkbox [(ngModel)]="item.checked" slot="start"></ion-checkbox>
+  </ion-item>
+
+  <ion-item style="margin-top: 3vh;">
+    <ion-label position="stacked">Comentario</ion-label>
+    <ion-textarea style="width: 100%;" [(ngModel)]="commentary"></ion-textarea>
+  </ion-item>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="block" color="primary" (click)="dismiss()">
+      Aceptar
+    </ion-button>
+
+
+  </ion-toolbar>
+</ion-footer>

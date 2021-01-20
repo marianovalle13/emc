@@ -1,0 +1,43 @@
+ion-header {
+    ion-segment {
+        background: var(--ion-color-primary);
+        ion-segment-button {
+            --border-color: white;
+            --color: white;
+            --color-checked: white;
+            --color-focused: white;
+            --color-hover: white;
+        }
+    }
+}
+
+
+ion-content {
+
+    ion-thumbnail {
+        height: 80px;
+        width: 100px;
+    }
+
+    ion-button {
+        font-size: 0.6rem;
+        --border-radius: 25px;
+        width: auto;
+        height: 20px;
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 0.8rem;
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        display: -webkit-box; 
+        -webkit-line-clamp: 2; 
+        line-height: 16px; 
+        max-height: 32px; 
+        -webkit-box-orient: vertical;
+    }
+}

@@ -1,0 +1,28 @@
+ion-content {
+
+    ion-slides {
+        padding: 16px;
+
+
+    }
+
+
+    
+    ion-card {
+        width: 100%;
+        border-radius: 15px;
+
+        ion-card-content {
+            .list-md {
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                }
+            .list-ios {
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+        }
+    }
+
+
+}

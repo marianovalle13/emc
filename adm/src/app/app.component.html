@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar mat-list-item><img src="assets/imgs/logo.png" class="img-fluid"></mat-toolbar>
+    <mat-nav-list [hidden]="!logged">
+      <a mat-list-item [routerLink]="['/']" routerLinkActive="router-link-active">Mapa</a>
+      <a mat-list-item [routerLink]="['/']" routerLinkActive="router-link-active">Emergencias en proceso</a>
+      <a mat-list-item [routerLink]="['/']" routerLinkActive="router-link-active">Emergencias Finalizadas</a>
+      <a mat-list-item [routerLink]="['/umacs']" routerLinkActive="router-link-active">UMACs</a>
+      <a mat-list-item [routerLink]="['/medics']" routerLinkActive="router-link-active">Médicos</a>
+      <a mat-list-item [routerLink]="['/drivers']" routerLinkActive="router-link-active">Conductores</a>
+      <a mat-list-item [routerLink]="['/nurses']" routerLinkActive="router-link-active">Enfermeros</a>
+      <a mat-list-item [routerLink]="['/users']" routerLinkActive="router-link-active">Usuarios</a>
+      <a mat-list-item [routerLink]="['/courses']" routerLinkActive="router-link-active">Cursos</a>
+      <a mat-list-item [routerLink]="['/news']" routerLinkActive="router-link-active">Novedades</a>
+      <a mat-list-item [routerLink]="['/categories']" routerLinkActive="router-link-active">Categorias de medicamentos</a>
+      <!-- <a mat-list-item *ngIf="this.pageService.auth('/administrators')" [routerLink]="['/administrators']" routerLinkActive="router-link-active">Administradores</a> -->
+      <a mat-list-item [routerLink]="['/tableMaintenance']" routerLinkActive="router-link-active">Mantenimiento de tablas</a>
+      <a *ngIf="logged" class="nav-link" (click)="logout()"><i class="fa fa-sign-out"></i> Cerrar Sesión</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="menubar">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> Gestión de Contenidos App
+
+    </mat-toolbar>
+    <!--The content below is only a placeholder and can be replaced.-->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

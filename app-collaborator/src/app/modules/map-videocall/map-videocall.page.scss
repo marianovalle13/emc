@@ -1,0 +1,33 @@
+ion-content {
+    #mapvideo {
+            width: 100%;
+            height: 100%;
+        }
+    
+        ion-card {
+        z-index: 1;
+        position: absolute;
+        width: 95%;
+    }
+
+    .class-span1 {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: black;
+    }
+
+    .class-span2 {
+        font-size: 0.8rem;
+        font-weight: lighter;
+        color: dimgray;
+    }
+
+    .class-ion-row {
+        padding-bottom: 8px
+    }
+
+ 
+
+        
+}
+

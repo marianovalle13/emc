@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Finalizar Servicio</ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <h2>
+        Datos del Servicio
+      </h2>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-list lines="none">
+        
+        <ion-item >
+          <ion-label class="class-text">
+            Fecha: 12/12/2020
+          </ion-label>
+          <ion-note class="class-text" slot="end">
+            Unidad movil: 1556
+          </ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="class-text">
+            Paciente: Pedro Rodriguez
+          </ion-label>
+          <ion-note class="class-text" slot="end">
+            Enfermero: Carlos Perez
+          </ion-note>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="class-text">
+            Médico: Ignacio Marin
+          </ion-label>
+          <ion-note  class="class-text" slot="end">
+            Conductor: Leonardo Ponzio
+          </ion-note>
+        </ion-item>
+       
+        <ion-row style="margin-top: 2vh;">
+          <ion-col class="ion-padding">
+            <ion-button expand="block" color="danger" fill="outline" style="--border-radius: 30px;">ACV</ion-button>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-item (click)="addSickness()" lines="full">
+          <ion-label position="stacked">Enfermedad</ion-label>
+          <ion-input type="text" placeholder="Escribir aqui..."></ion-input>
+        </ion-item>
+        
+      </ion-list>
+
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-item>
+          <ion-label position="stacked">Diagnostico presuntivo</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Enfermedad</ion-label>
+          <ion-select placeholder="Seleccionar...">
+            <ion-select-option value="f">Enfermedad 1</ion-select-option>
+            <ion-select-option value="m">Enfermedad 2</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  
+      
+    
+  </ion-content>
+  
+
+  <ion-footer class="ion-no-border">
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="primary" (click)="showAlert()">Continuar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>

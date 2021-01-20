@@ -1,0 +1,16 @@
+ion-header {
+    --background: transparent !important;
+    ion-toolbar{
+        --background: transparent !important;
+        color: var(--ion-color-primary);
+    }
+}
+
+ion-content {
+
+        .class-input {
+            padding-top: 8px;
+            // color: var(--ion-color-primary);
+        }
+}
+

@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Recorrido</ion-title>
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  
+  <div >
+    <ion-card class="ion-padding">
+  
+      <ion-row class="class-ion-row">
+        <ion-label>
+          <span class="class-span1">
+            Tiempo estimado de arribo:
+          </span>
+          <span class="class-span2">14:01 minutos.</span>
+        </ion-label>
+      </ion-row>
+  
+      <ion-row class="class-ion-row">
+        <ion-label>
+          <span class="class-span1">
+            Patente unidad móvil:
+          </span>
+          <span class="class-span2">LXV 589</span>
+        </ion-label>
+      </ion-row>
+  
+      <ion-row class="class-ion-row">
+        <ion-label>
+          <span class="class-span1">
+            Médico:
+          </span>
+          <span class="class-span2">Pedro Rodriguez</span>
+        </ion-label>
+      </ion-row>
+  
+      <ion-row class="class-ion-row">
+        <ion-label>
+          <span class="class-span1">
+            Enfermero:
+          </span>
+          <span class="class-span2">Pedro Rodriguez</span>
+        </ion-label>
+      </ion-row>
+  
+      <ion-row>
+        <ion-label>
+          <span class="class-span1">
+            Conductor:
+          </span>
+          <span class="class-span2">Pedro Rodriguez</span>
+        </ion-label>  
+      </ion-row>
+  
+    </ion-card>
+  </div>
+
+
+  <div #map id="map"></div>
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="secondary" (click)="goToChat()">
+    <ion-icon name="chatbubble" color="light"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>

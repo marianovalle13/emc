@@ -1,0 +1,43 @@
+<div class="container">
+  <nav aria-label="breadcrumb" class="mt-2">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/courses']" routerLinkActive="router-link-active">Cursos</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Gestionar Curso</li>
+    </ol> 
+  </nav>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" class="form-control" formControlName="fullName">
+          <div *ngIf="isFieldValid('fullName')" class="invalid-input-message">
+            {{getFieldError('fullName')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input type="text" class="form-control" formControlName="emailAddress"/>
+          <div *ngIf="isFieldValid('emailAddress')" class="invalid-input-message">
+            {{getFieldError('emailAddress')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Telefono</label>
+          <input type="url" class="form-control" formControlName="phoneNumber">
+          <div *ngIf="isFieldValid('phoneNumber')" class="invalid-input-message">
+            {{getFieldError('phoneNumber')}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col">
+        <button class="btn btn-secondary float-right mr-5" block [disabled]="!form.valid" type="submit">
+          <i class="fa fa-check" aria-hidden="true"></i> GUARDAR
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Curso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid class="ion-no-padding">
+    <ion-row *ngIf="course?.video">
+      <ion-col>
+        <iframe width="100%" height="250" [src]="getVideo(course?.video)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-padding">
+        <h3 style="margin-top: 0px;">
+          {{course?.name}}
+        </h3>
+        <p>{{course?.description}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-row *ngIf="!course?.isTheoretical">
+      <ion-button color="secondary" expand="block" style="--color: white;" (click)="goToPage(course?.link)">Inscribirse</ion-button>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

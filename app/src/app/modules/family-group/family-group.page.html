@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Agregar</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-item lines="full" class="class-input">
+      <ion-label position="floating">Nombre y apellido</ion-label>
+      <ion-input type="text" required [(ngModel)]="fullName"></ion-input>
+    </ion-item>
+    
+    
+    <ion-item lines="full" class="class-input">
+      <ion-label position="floating">Sexo</ion-label>
+      <ion-select [(ngModel)]="gender">
+        <ion-select-option value="man">Masculino</ion-select-option>
+        <ion-select-option value="woman">Femenino</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item lines="full" class="class-input">
+      <ion-label position="stacked">Fecha de nacimiento</ion-label>
+      <ion-input type="date" required [(ngModel)]="birthDate"></ion-input>
+    </ion-item>
+
+
+   
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar >
+    <ion-button expand="block" color="primary" (click)="dismiss()">
+      Aceptar
+    </ion-button>
+
+
+  </ion-toolbar>
+</ion-footer>

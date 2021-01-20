@@ -1,0 +1,42 @@
+<h3>Administradores</h3>
+
+<button type="button" (click)="create()">
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+    nuevo
+</button>
+
+<table>
+  <tr *ngFor="let item of items">
+    <td>
+      {{item.user}}
+    </td>
+    <td>
+      <button type="button" (click)="edit(item)">
+          Editar
+      </button>
+    </td>
+    <td>
+      <button type="button" (click)="remove(item)">
+        Eliminar
+      </button>
+    </td>
+  </tr>
+</table>
+
+<BR>
+<button type="button" (click)="previousPage()" [disabled]="page <= 1">
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+    Anterior
+</button>
+<br>
+Pagina - {{page}}
+<br>
+<button type="button" (click)="nextPage()" [disabled]="pages <= page">
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+    Siguiente
+</button>
+<br>
+Total de paginas - {{pages}}
+<br>
+Total de elementos - {{count}}
+<br>

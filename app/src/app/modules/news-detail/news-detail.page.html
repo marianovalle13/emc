@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Novedad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-item lines="none">
+      <ion-label>{{new.title}}</ion-label>
+      <ion-note slot="end">{{new.createdAt | date: 'dd/MM/yyyy'}}</ion-note>
+    </ion-item>
+    <ion-card>
+      <ion-card-header>
+        <img [src]="filesUrl + new.image" onError="this.src='assets/imgs/placeholder.png'" style="object-fit: cover;" height="160px" width="100%">
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{new.text}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

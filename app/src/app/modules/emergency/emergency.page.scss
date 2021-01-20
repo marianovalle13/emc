@@ -1,0 +1,48 @@
+ion-content {
+
+    ion-grid {
+        padding: 12px;
+
+        ion-row {
+            height: 75px;
+            padding: 10px;
+            border-radius: 15px;
+            margin-bottom: 8px;
+            border: 1px;
+            box-shadow: 0 0 5px 0px grey;
+
+            span {
+                color: var(--ion-color-light);
+                font-weight: bold;
+            }
+
+            .space-col {
+                margin-top: 12px;
+            }
+        }
+
+        .perdida-de-consciencia {
+            background: #FF0000;
+        }
+
+        .dificultad-respiratoria {
+            background: #FF4500;
+        }
+
+        .grandes-hemorragias {
+            background: #FF7600;
+        }
+
+        .acv {
+            background: #FF8900;
+        }
+
+        .dolor-de-pecho {
+            background: #FFA700;
+        }
+
+        .otro {
+            background: #EDC106;
+        }
+    }
+}

@@ -1,0 +1,135 @@
+<div class="container">
+  <nav aria-label="breadcrumb" class="mt-2">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/umacs']" routerLinkActive="router-link-active">UMACs</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Gestionar UMAC</li>
+    </ol>
+  </nav>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <legend>Datos Personales</legend>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nombre y Apellido</label>
+          <input type="text" class="form-control" formControlName="fullName">
+          <div *ngIf="isFieldValid('fullName')" class="invalid-input-message">
+            {{getFieldError('fullName')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="text" class="form-control" formControlName="phoneNumber">
+          <div *ngIf="isFieldValid('phoneNumber')" class="invalid-input-message">
+            {{getFieldError('phoneNumber')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Dominio</label>
+          <input type="text" class="form-control" formControlName="domain">
+          <div *ngIf="isFieldValid('domain')" class="invalid-input-message">
+            {{getFieldError('domain')}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Mail</label>
+          <input type="email" class="form-control" formControlName="emailAddress">
+          <div *ngIf="isFieldValid('emailAddress')" class="invalid-input-message">
+            {{getFieldError('emailAddress')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="password">
+          <div *ngIf="isFieldValid('password')" class="invalid-input-message">
+            {{getFieldError('password')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password Confirmacion</label>
+          <input type="password" class="form-control" formControlName="passwordVerify">
+          <div *ngIf="isFieldValid('passwordVerify')" class="invalid-input-message">
+            {{getFieldError('passwordVerify')}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <legend>Vehículo</legend>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Marca</label>
+          <select class="custom-select" formControlName="vehicleBrand" (change)="getModelByBrand($event.target.value)">
+            <optgroup label="Seleccione marca"></optgroup>
+            <option [value]="vb.id" *ngFor="let vb of vehicleBrands">{{vb.name}}</option>
+          </select>
+          <div *ngIf="isFieldValid('vehicleBrand')" class="invalid-input-message">
+            {{getFieldError('vehicleBrand')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tipo</label>
+          <select class="custom-select" formControlName="vehicleType">
+            <optgroup label="Seleccione tipo"></optgroup>
+            <option [value]="vt.id" *ngFor="let vt of vehicleTypes">{{vt.name}}</option>
+          </select>
+          <div *ngIf="isFieldValid('vehicleType')" class="invalid-input-message">
+            {{getFieldError('vehicleType')}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Modelo</label>
+          <select class="custom-select" formControlName="vehicleModel">
+            <optgroup label="Seleccione modelo"></optgroup>
+            <option [value]="vm.id" (selected)="item.vehicleModel" *ngFor="let vm of vehicleModelByBrand">{{vm.name}}</option>
+          </select>
+          <div *ngIf="isFieldValid('vehicleModel')" class="invalid-input-message">
+            {{getFieldError('vehicleModel')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Seguro</label>
+          <select class="custom-select" formControlName="vehicleInsurance">
+            <optgroup label="Seleccione seguro"></optgroup>
+            <option [value]="vi.id" *ngFor="let vi of vehicleInsurances">{{vi.name}}</option>
+          </select>
+          <div *ngIf="isFieldValid('vehicleInsurance')" class="invalid-input-message">
+            {{getFieldError('vehicleInsurance')}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Archivo del seguro</label>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="umacInsuranceFile" formControlName="insuranceFile" lang="es">
+        <label class="custom-file-label" for="umacInsuranceFile">Seleccionar Archivo</label>
+      </div>
+      <div *ngIf="isFieldValid('insuranceFile')" class="invalid-input-message">
+        {{getFieldError('insuranceFile')}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Equipamiento</label>
+      <select class="custom-select" multiple formControlName="equipments">
+        <option [value]="equipment.id" *ngFor="let equipment of equipments">{{equipment.name}}</option>
+      </select>
+      <div *ngIf="isFieldValid('equipments')" class="invalid-input-message">
+        {{getFieldError('equipments')}}
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col">
+        <button class="btn btn-secondary" block [disabled]="!form.valid" type="submit">
+          <i class="fa fa-check" aria-hidden="true"></i> GUARDAR
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tenes una emergencia?</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToUser()">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+
+    <div *ngFor="let emergencyType of emergencyTypes">
+      <ion-row style="background-color: {{emergencyType.ui?.background}}" (click)="createEmergency(emergencyType)">
+        <ion-col size="3" style="text-align: center;">
+          <!-- <img src="assets/imgs/perdida-de-consciencia.png"> -->
+          <img [src]="emergencyType.ui.icon ? filesUrl + emergencyType.ui.icon : 'assets/imgs/' + emergencyType.code + '.png'">
+        </ion-col>
+        <ion-col size="9" style="margin-top: 3px;">
+          <span>{{emergencyType.name}}</span>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <!-- <ion-row class="perdida-de-consciencia" (click)="goToEmergencyDetail()">
+      <ion-col size="3" style="text-align: center;">
+        <img src="assets/imgs/perdida-de-consciencia.png">
+      </ion-col>
+      <ion-col size="9" style="margin-top: 3px;">
+        <span>Perdida de Consciencia No Recuperada</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="dificultad-respiratoria">
+      <ion-col size="3" style="text-align: center;">
+        <img src="assets/imgs/dificultad-respiratoria.png">
+      </ion-col>
+      <ion-col size="9" class="space-col">
+        <span>Dificultad Respiratoria Severa</span>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="grandes-hemorragias">
+      <ion-col size="3" style="text-align: center;">
+        <img src="assets/imgs/grandes-hemorragias.png">
+      </ion-col>
+      <ion-col size="9" class="space-col">
+        <span>Grandes Hemorragias</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="acv">
+      <ion-col size="3" style="text-align: center;">
+        <img src="assets/imgs/acv.png">
+      </ion-col>
+      <ion-col size="9" class="space-col">
+        <span>ACV</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="dolor-de-pecho">
+      <ion-col size="3" style="text-align: center;">
+        <img src="assets/imgs/dolor-de-pecho.png">
+      </ion-col>
+      <ion-col size="9" class="space-col">
+        <span>Dolor de pecho</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="otro" (click)="goToNewEmergency()">
+      <ion-col size="3" style="text-align: center;">
+        <img src="assets/imgs/otro.png">
+      </ion-col>
+      <ion-col size="9" class="space-col">
+        <span>Otro</span>
+      </ion-col>
+    </ion-row> -->
+  </ion-grid>
+
+</ion-content>

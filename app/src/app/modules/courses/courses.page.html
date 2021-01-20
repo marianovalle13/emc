@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cursos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToUser()">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+      <ion-segment [(ngModel)]="menu">
+        <ion-segment-button value="presenciales">
+          <ion-label>PRESENCIALES</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="teoricos">
+          <ion-label>TEÓRICOS</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+</ion-header>
+
+<ion-content>
+
+  <ion-row style="justify-content: center; margin-top: 16px" *ngIf="courses.length <= 0">
+    <p style="text-align: center; color: gray; font-size: 1rem;">No hay cursos</p>
+  </ion-row>
+
+  <div [ngSwitch]="menu">
+    <ion-list style="padding: 8px;">
+      <div *ngSwitchCase="'presenciales'">
+        <div *ngFor="let item of courses">
+          <ion-item *ngIf="!item.isTheoretical" lines="full" (click)="goToCourse(item.id)">
+            <ion-thumbnail slot="start">
+              <img [src]="filesUrl + item.image" onError="this.src='assets/imgs/placeholder.png'">
+            </ion-thumbnail>
+            <ion-label class="ion-text-wrap">
+              <h3>{{item.name}}</h3>
+              <p text-wrap ion-text>{{item.description}}</p>
+              <ion-button fill="outline">Gratis</ion-button>
+            </ion-label>
+          </ion-item>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'teoricos'" >
+        <div *ngFor="let item of courses">
+          <ion-item *ngIf="item.isTheoretical" lines="full" (click)="goToCourse(item.id)">
+            <ion-thumbnail slot="start">
+              <img [src]="filesUrl + item.image" onError="this.src='assets/imgs/placeholder.png'">
+            </ion-thumbnail>
+            <ion-label class="ion-text-wrap">
+              <h3>{{item.name}}</h3>
+              <p text-wrap ion-text>{{item.description}}</p>
+              <ion-button fill="outline">Gratis</ion-button>
+            </ion-label>
+          </ion-item>
+        </div>
+      </div>
+    </ion-list>
+  </div>
+
+
+</ion-content>

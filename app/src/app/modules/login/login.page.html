@@ -1,0 +1,54 @@
+<ion-content>
+
+  <ion-grid class="class-grid">
+
+    <ion-row>
+      <ion-col size="1">
+      </ion-col>
+      <ion-col size="10">
+        <ion-img src="assets/imgs/icono.png"></ion-img>
+      </ion-col>
+      <ion-col size="1">
+      </ion-col>
+    </ion-row>
+
+
+    <form style="margin-top: 10vh;" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" required formControlName="username"></ion-input>
+      </ion-item>
+      <div *ngIf="isFieldValid('username')" class="invalid-input-message">
+        {{getFieldError('username')}}
+      </div>
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" required formControlName="password"></ion-input>
+      </ion-item>
+      <div *ngIf="isFieldValid('password')" class="invalid-input-message">
+        {{getFieldError('password')}}
+      </div>
+
+      <ion-row class="class-row-button">
+        <ion-col class="class-col-button">
+          <ion-button type="submit" color="primary" expand="block" fill="outline">Ingresar</ion-button>
+          <!-- <ion-button type="button" color="primary" expand="block" fill="outline" (click)="goToHome()">Ingresar</ion-button> -->
+        </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col style="padding: 0px;">
+          <ion-button type="button" color="secondary" expand="block" fill="outline" style="height: 40px;" (click)="goToRegister()">Registrar</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="padding-top: 8px; text-align: center;">
+          <span style="color: var(--ion-color-primary); text-decoration: underline; font-size: 0.8rem;" (click)="goToRecoverPassword()">
+            Has olvidado tu Contraseña?
+          </span>
+        </ion-col>
+      </ion-row>
+    </form>
+
+  </ion-grid>
+</ion-content>

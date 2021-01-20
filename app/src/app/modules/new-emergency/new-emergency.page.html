@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nueva emergencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides pager="true" [options]="slideOptsOne" style="padding-bottom: 35px;" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+    <ion-slide>
+
+      <ion-card>
+        <ion-card-header>
+          Tipo de dolencia
+        </ion-card-header>
+        <ion-card-content>
+          <ion-radio-group (ionChange)="showCommentary($event.detail.value)">
+          <ion-list lines="none">
+            <ion-item>
+              <ion-label>Dolor en...</ion-label>
+              <ion-radio slot="end" value="pain"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Ardor en...</ion-label>
+              <ion-radio slot="end" value="burning"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Herida cortante en...</ion-label>
+              <ion-radio slot="end" value="wound"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Traumatismo en...</ion-label>
+              <ion-radio slot="end" value="trauma"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Otro</ion-label>
+              <ion-radio slot="end" value="other"></ion-radio>
+            </ion-item>
+          </ion-list>
+        </ion-radio-group>
+              <ion-item style="margin-top: 3px;" *ngIf="show">
+                <ion-label position="floating">Comentario</ion-label>
+                <ion-textarea placeholder="Escriba aqui la observación..."></ion-textarea>
+              </ion-item>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          Indicar dolencia del cuerpo
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col>
+              <ion-button color="secondary" expand="block" fill="outline" style="padding-bottom: 5px;" (click)="selectBodyPart('head')">Cabeza y Cuello</ion-button>
+              <ion-button color="secondary" expand="block" fill="outline" style="padding-bottom: 5px;" (click)="selectBodyPart('arms')">Brazos</ion-button>
+              <ion-button color="secondary" expand="block" fill="outline" style="padding-bottom: 5px;" (click)="selectBodyPart('chest')">Torax</ion-button>
+              <ion-button color="secondary" expand="block" fill="outline" style="padding-bottom: 5px;" (click)="selectBodyPart('abdomen')">Abdomen</ion-button>
+              <ion-button color="secondary" expand="block" fill="outline" style="padding-bottom: 5px;" (click)="selectBodyPart('legs')">Piernas</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-row *ngIf="completedForm == false">
+      <ion-button color="primary" expand="block" (click)="slideNext(sliderOne,slideWithNav)">Siguiente</ion-button>
+    </ion-row>
+
+    <ion-row *ngIf="completedForm == true">
+      <ion-col size="6">
+        <ion-button color="primary" expand="block" (click)="slidePrev(sliderOne,slideWithNav)" >
+          Volver</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button color="secondary" expand="block" (click)="createEmergency()">
+          Finalizar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

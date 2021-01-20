@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Novedades</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToUser()">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-row style="justify-content: center; margin-top: 16px" *ngIf="news.length <= 0">
+  <p style="text-align: center; color: gray; font-size: 1rem;">No hay novedades</p>
+</ion-row>
+
+<div *ngFor="let item of news">
+  <ion-item lines="none">
+    <ion-label>{{item.title}}</ion-label>
+    <ion-note slot="end">{{item.createdAt | date: 'dd/MM/yyyy'}}</ion-note>
+  </ion-item>
+  <ion-card (click)="goToNewsDetail(item.id)">
+    <ion-card-header>
+      <img [src]="filesUrl + item.image" onError="this.src='assets/imgs/placeholder.png'" style="object-fit: cover;" height="160px" width="100%">
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{item.subtitle}}</p>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+</ion-content>

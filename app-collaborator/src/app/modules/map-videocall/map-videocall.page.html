@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ubicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-card class="ion-padding">
+  
+      <ion-row class="class-ion-row" style="margin-top: 25vh">
+        <ion-button expand="block" color="danger">
+          <ion-icon name="call" slot="start"></ion-icon>
+          Cortar
+        </ion-button>
+      </ion-row>
+  
+    </ion-card>
+  </div>
+
+  <div #mapvideo id="mapvideo"></div>
+
+  <!-- <ion-button expand="block" color="secondary" style="position: absolute;">Ingresando servicio</ion-button> -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="primary" (click)="goToService()">
+    <ion-icon name="arrow-forward"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab-button color="secondary" (click)="goToChat()">
+    <ion-icon name="chatbubbles"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+  
+
+</ion-content>

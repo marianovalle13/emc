@@ -1,0 +1,31 @@
+<div class="container">
+  <nav aria-label="breadcrumb" class="mt-2">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/categories']" routerLinkActive="router-link-active">
+          Categorías de medicamentos</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Gestionar Categoría de medicamento</li>
+    </ol>
+  </nav>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" class="form-control" formControlName="name">
+          <div *ngIf="isFieldValid('name')" class="invalid-input-message">
+            {{getFieldError('name')}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col">
+        <button class="btn btn-secondary" block [disabled]="!form.valid" type="submit">
+          <i class="fa fa-check" aria-hidden="true"></i> GUARDAR
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

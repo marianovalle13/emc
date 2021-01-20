@@ -1,0 +1,194 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-list >
+
+      <ion-item lines="full" class="class-input">
+        <ion-avatar slot="end" (click)="changePicture()">
+          <img onError="this.src='assets/imgs/avatar.png'" [src]="filesUrl + form?.value?.picture">
+        </ion-avatar>
+        <ion-label>Foto de perfil</ion-label>
+      </ion-item>
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">Nombre y apellido</ion-label>
+        <ion-input type="text" required class="form-control" formControlName="fullName"></ion-input>
+      </ion-item>
+      <div *ngIf="isFieldValid('fullName')" class="invalid-input-message">
+        {{getFieldError('fullName')}}
+      </div>
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">Sexo</ion-label>
+        <ion-select formControlName="gender">
+          <ion-select-option value="man">Masculino</ion-select-option>
+          <ion-select-option value="woman">Femenino</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngIf="isFieldValid('gender')" class="invalid-input-message">
+        {{getFieldError('gender')}}
+      </div>
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="stacked">Fecha de nacimiento</ion-label>
+        <ion-input type="date" required formControlName="birthDate"></ion-input>
+      </ion-item>
+      <div *ngIf="isFieldValid('birthDate')" class="invalid-input-message">
+        {{getFieldError('birthDate')}}
+      </div>
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">Direccion</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input type="number" required formControlName="phoneNumber"></ion-input>
+      </ion-item>
+      <div *ngIf="isFieldValid('phoneNumber')" class="invalid-input-message">
+        {{getFieldError('phoneNumber')}}
+      </div>
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" required class="form-control" formControlName="emailAddress"></ion-input>
+      </ion-item>
+      <div *ngIf="isFieldValid('emailAddress')" class="invalid-input-message">
+        {{getFieldError('emailAddress')}}
+      </div>
+
+      <ion-item lines="full" class="class-input" *ngIf="creating">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" required class="form-control" formControlName="password"></ion-input>
+      </ion-item>
+      <div *ngIf="isFieldValid('password') && creating" class="invalid-input-message">
+        {{getFieldError('password')}}
+      </div>
+
+      <ion-item lines="full" class="class-input" *ngIf="creating">
+        <ion-label position="floating">Confirmar Contraseña</ion-label>
+        <ion-input type="password" required class="form-control" formControlName="passwordVerify"></ion-input>
+      </ion-item>
+      <div *ngIf="isFieldValid('passwordVerify') && creating" class="invalid-input-message">
+        {{getFieldError('passwordVerify')}}
+      </div>
+
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">DNI</ion-label>
+        <ion-input type="number" required class="form-control" formControlName="dni"></ion-input>
+      </ion-item>
+      <div *ngIf="isFieldValid('dni')" class="invalid-input-message">
+        {{getFieldError('dni')}}
+      </div>
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">Obra Social</ion-label>
+        <ion-select formControlName="phc" (ionChange)="changePhc($event.detail.value)">
+          <ion-select-option *ngFor="let item of phcs" value="{{item.id}}">{{item.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="full" class="class-input">
+        <ion-label position="floating">Plan de Obra Social</ion-label>
+        <ion-select formControlName="phcp">
+          <ion-select-option *ngFor="let item of phcps" value="{{item.id}}">{{item.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none" class="class-input">
+        <ion-label>Grupo Familiar</ion-label>
+        <ion-icon name="add-circle" color="primary" slot="end" (click)="familiarGroup('')"></ion-icon>
+      </ion-item>
+
+      <table *ngIf="dataFamiliarGroup.length > 0" class="table" cellspacing="2">
+        <thead>
+          <tr>
+            <th width="10%">Nombre</th>
+            <th>Nacimiento</th>
+            <th width="10%">Sexo</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of dataFamiliarGroup">
+          <tr>
+            <td>{{item.fullName}}</td>
+            <td >{{item.birthDate | date: 'dd/MM/yyyy'}}</td>
+            <td *ngIf="item.gender == 'woman'">
+              Femenino
+            </td>
+            <td *ngIf="item.gender == 'man'">
+              Masculino
+            </td>
+            <td>
+              <ion-icon color="primary" name="create-outline" (click)="familiarGroup(item)"></ion-icon>
+            </td>
+            <td>
+              <ion-icon color="danger" name="remove-circle-outline" (click)="removeFamiliarGroup(item)"></ion-icon>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+      <ion-item lines="none" class="class-input">
+        <ion-label>Ficha médica</ion-label>
+        <ion-icon *ngIf="medicalRecord?.diseases.length == 0" name="add-circle" color="primary" slot="end" (click)="medicalForm()"></ion-icon>
+        <ion-icon *ngIf="medicalRecord?.diseases.length > 0" name="create-outline" color="primary" slot="end" (click)="medicalForm(medicalRecord)"></ion-icon>
+      </ion-item>
+
+      <ion-item *ngIf="medicalRecord?.diseases.length > 0" lines="none">
+        <ion-label>
+          <div *ngFor="let item of medicalRecord.diseases">
+            <h3 *ngIf="item.checked">{{item.name}}</h3>
+          </div>
+          <p>{{medicalRecord.commentary}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-row class="class-row-button" *ngIf="creating">
+      <ion-col class="class-col-button">
+         <ion-button type="submit" color="secondary" expand="block" fill="outline">Registrar</ion-button>
+        <!-- <ion-button type="submit" color="secondary" expand="block" fill="outline" (click)="goToHome()">Registrar</ion-button> -->
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="class-row-button" *ngIf="!creating">
+      <ion-col class="class-col-button">
+         <ion-button type="submit" color="secondary" expand="block" fill="outline">Actualizar</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="class-row-button" *ngIf="!creating">
+      <ion-col class="class-col-button">
+         <!-- <ion-button type="button" color="secondary" expand="block" (click)="changePassword()">Cambiar Contraseña</ion-button> -->
+         <ion-button type="button" color="primary" expand="block" fill="outline" (click)="changePassword()">Cambiar Contraseña</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="class-row-button" *ngIf="!creating">
+      <ion-col class="class-col-button">
+         <ion-button type="button" color="primary" expand="block" (click)="logout()">Cerrar Sesión</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+
+
+
+
+
+</ion-content>

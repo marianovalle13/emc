@@ -1,0 +1,44 @@
+ion-content {
+    --background: rgb(235, 232, 232);
+
+    .custom-header {
+        ion-thumbnail {
+            img {
+                height: 40px;
+                width: 40px;
+                margin-top: 5px;
+                object-fit: contain;
+                overflow: visible;
+            }
+        }
+    }
+
+    .class-label {
+        // color: var(--ion-color-primary);
+        font-size: 1rem;
+    }
+
+    .class-item {
+        border-radius: 5px;
+        color: white;
+        box-shadow: 0 0 5px 0px #808080;
+
+        ion-note {
+            color: white;
+        }
+    }
+
+    .customer-detail {
+        ion-item {
+            max-height: 2.2em;
+        }
+
+        ion-label {
+            font-size: .9em;
+        }
+
+        ion-note {
+            font-size: .9em;
+        }
+    }
+}

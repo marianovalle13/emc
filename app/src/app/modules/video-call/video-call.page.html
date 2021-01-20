@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Videollamada</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="container">
+    <div id="subscriber" class="subscriber">
+      <div id="publisher" class="publisher"></div>
+    </div>
+  </div>
+
+  <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed" style="z-index:9000">
+    <ion-fab-button color="danger" (click)="startCall()">
+      <ion-icon name="call"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+
+</ion-content>
+
+<ion-footer class="ion-no-border transp" translucent="true">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="toggleCall()" [color]="ui[callStatus].iconColor" shape="round" >
+          <ion-icon [name]="ui[callStatus].icon"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
+
+
+
+<!-- <ion-footer class="ion-no-border" >
+  <ion-toolbar>
+    <ion-row>
+      <ion-col horizontal="center">
+        <ion-fab-button [color]="ui[callStatus].iconColor" (click)="toggleCall()">
+          <ion-icon [name]="ui[callStatus].icon"></ion-icon>
+        </ion-fab-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer> -->
+
+<!-- <ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button color="primary" type="button" (click)="connect()"fill="outline" >Conectar</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button color="primary" type="button" (click)="startCall()">Iniciar</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button color="secondary" type="button" (click)="stopCall()">Cortar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer> -->
+
+
+<!-- <ion-content class="background">
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button color="danger" (click)="startCall()">
+    <ion-icon name="call"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content> -->

@@ -1,0 +1,39 @@
+<div class="container">
+  <nav aria-label="breadcrumb" class="mt-2">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/vehicleModels']" routerLinkActive="router-link-active">Modelos de
+          Vehículo</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Gestionar Modelo de Vehículo</li>
+    </ol>
+  </nav>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Ingrese el Modelo Aquí" class="form-control" formControlName="name">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Marca</label>
+          <select class="form-control" placeholder="Elija una marca" formControlName="vehicleBrand" >
+            <optgroup label="Seleccione la marca">
+              <option value="{{item.id}}" *ngFor="let item of brands">{{item.name}}</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col">
+        <button class="btn btn-secondary" block [disabled]="!form.valid" type="submit">
+          <i class="fa fa-check" aria-hidden="true"></i> GUARDAR
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
